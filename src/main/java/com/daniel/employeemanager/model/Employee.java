@@ -1,8 +1,6 @@
 package com.daniel.employeemanager.model;
 
 import com.daniel.employeemanager.model.dto.EmployeeDto;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;

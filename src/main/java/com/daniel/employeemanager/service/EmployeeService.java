@@ -5,10 +5,11 @@ import com.daniel.employeemanager.model.Department;
 import com.daniel.employeemanager.model.Employee;
 import com.daniel.employeemanager.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 public class EmployeeService {
@@ -19,8 +20,12 @@ public class EmployeeService {
         this.employeeRepo = employeeRepo;
     }
 
-    public List<Employee> findAllEmployees() {
-        return employeeRepo.findAll();
+    public Page<Employee> findAllEmployees(Pageable paging) {
+        return employeeRepo.findAll(paging);
+    }
+
+    public Page<Employee> findAllEmployeesBySurname(String surname, Pageable pageable) {
+        return employeeRepo.findBySurnameContaining(surname, pageable);
     }
 
     public Employee findEmployeeById(Long id) {
