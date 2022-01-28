@@ -4,6 +4,8 @@ import com.daniel.employeemanager.model.dto.EmployeeDto;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Employee implements Serializable {
@@ -15,7 +17,7 @@ public class Employee implements Serializable {
     private String surname;
     private String email;
     private String phone;
-    private String login;
+    private String username;
     private String password;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id")
@@ -23,19 +25,29 @@ public class Employee implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "title_id")
     private Title title;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "employee_roles",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     public Employee() {
     }
 
-    public Employee(Long id, String name, String email, String phone, String login, String password, Department department, Title title) {
+    public Employee(Long id, String name, String email, String phone, String username, String password, Department department, Title title) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.login = login;
+        this.username = username;
         this.password = password;
         this.department = department;
         this.title = title;
+    }
+
+    public Employee(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public static Employee from(EmployeeDto employeeDto) {
@@ -44,7 +56,7 @@ public class Employee implements Serializable {
         employee.setSurname(employeeDto.getSurname());
         employee.setEmail(employeeDto.getEmail());
         employee.setPhone(employeeDto.getPhone());
-        employee.setLogin(employeeDto.getLogin());
+        employee.setUsername(employeeDto.getUsername());
         employee.setPassword(employeeDto.getPassword());
         return employee;
     }
@@ -89,12 +101,12 @@ public class Employee implements Serializable {
         this.phone = phone;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -121,6 +133,14 @@ public class Employee implements Serializable {
         this.title = title;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -129,7 +149,7 @@ public class Employee implements Serializable {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", login='" + login + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", department=" + department +
                 ", title=" + title +

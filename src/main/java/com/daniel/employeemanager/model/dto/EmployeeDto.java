@@ -10,7 +10,7 @@ public class EmployeeDto {
     private String surname;
     private String email;
     private String phone;
-    private String login;
+    private String username;
     private String password;
     private Department department;
     private Title title;
@@ -18,13 +18,13 @@ public class EmployeeDto {
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long id, String name, String surname, String email, String phone, String login, String password, Department department, Title title) {
+    public EmployeeDto(Long id, String name, String surname, String email, String phone, String username, String password, Department department, Title title) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.phone = phone;
-        this.login = login;
+        this.username = username;
         this.password = password;
         this.department = department;
         this.title = title;
@@ -37,7 +37,7 @@ public class EmployeeDto {
         employeeDto.setSurname(employee.getSurname());
         employeeDto.setEmail(employee.getEmail());
         employeeDto.setPhone(employee.getPhone());
-        employeeDto.setLogin(employee.getLogin());
+        employeeDto.setUsername(employee.getUsername());
         employeeDto.setPassword(employee.getPassword());
         employeeDto.setDepartment(employee.getDepartment());
         employeeDto.setTitle(employee.getTitle());
@@ -84,12 +84,12 @@ public class EmployeeDto {
         this.phone = phone;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -124,7 +124,7 @@ public class EmployeeDto {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", login='" + login + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", department=" + department +
                 ", title=" + title +

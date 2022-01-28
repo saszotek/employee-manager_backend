@@ -42,7 +42,7 @@ public class EmployeeService {
         updatedEmployee.setEmail(employee.getEmail());
         updatedEmployee.setName(employee.getName());
         updatedEmployee.setSurname(employee.getSurname());
-        updatedEmployee.setLogin(employee.getLogin());
+        updatedEmployee.setUsername(employee.getUsername());
         updatedEmployee.setPassword(employee.getPassword());
         updatedEmployee.setPhone(employee.getPhone());
 //        updatedEmployee.setDepartment(employee.getDepartment());
