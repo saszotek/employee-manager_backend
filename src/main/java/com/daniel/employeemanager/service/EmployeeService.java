@@ -1,7 +1,6 @@
 package com.daniel.employeemanager.service;
 
 import com.daniel.employeemanager.exception.EmployeeNotFoundException;
-import com.daniel.employeemanager.model.Department;
 import com.daniel.employeemanager.model.Employee;
 import com.daniel.employeemanager.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +41,8 @@ public class EmployeeService {
         updatedEmployee.setEmail(employee.getEmail());
         updatedEmployee.setName(employee.getName());
         updatedEmployee.setSurname(employee.getSurname());
-        updatedEmployee.setUsername(employee.getUsername());
-        updatedEmployee.setPassword(employee.getPassword());
+//        updatedEmployee.setUsername(employee.getUsername());
+//        updatedEmployee.setPassword(employee.getPassword());
         updatedEmployee.setPhone(employee.getPhone());
 //        updatedEmployee.setDepartment(employee.getDepartment());
 //        updatedEmployee.setTitle(employee.getTitle());
