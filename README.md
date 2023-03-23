@@ -15,6 +15,6 @@ Main page lists all users and includes server-side pagination. All user informat
 
 ## Technologies
 
-- Java Spring Boot
+- Spring Boot
 - JSON Web Token
 - MySQL
